@@ -1,23 +1,23 @@
 import React,{useEffect, useState} from "react";
 import List from './List';
-import axios from "axios";
-
-
 
 function App() {
   const [data, setData] =useState([]);
-  useEffect( async () => {
-    const response = await axios.get("https://jsonplaceholder.typicode.com/posts");
-    // console.log(response.data);
-    setData(response.data);
-  }, []);
-  const res = data.map((item,index)=>{
-    return(<h3 key={index}>{item.title}---{item.body}</h3>)
-  })
+  useEffect(() => {
+    const getData = async () => {
+      const url = "https://jsonplaceholder.typicode.com/todos/";
+      const response = await fetch(url);
+      const results = await response.json();
+      setData(results);
+    }
+    getData(); 
+  }, [])
+  
   return (
     <div className="App">
-      
-      <List data={res}/>
+      <h1>종량제 판매업소</h1>
+      <h2>{data.length}개</h2>
+      <List data={data}/>
     </div>
   );
 }
