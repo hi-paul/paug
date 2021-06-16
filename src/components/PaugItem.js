@@ -8,8 +8,8 @@ const PaugItemBlock = styled.div`
   padding-bottom: 12px;
 `;
 
-function PaugItem({ text }) {
-  return <PaugItemBlock>{text}</PaugItemBlock>;
+function PaugItem({ df }) {
+  return <PaugItemBlock>{df.loc} : {df.name} </PaugItemBlock>;
 }
 
 export default PaugItem;

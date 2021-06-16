@@ -9,12 +9,15 @@ const PaugListBlock = styled.div`
   overflow-y: auto;
 `;
 
-function PaugList({ data }) {
+function PaugList({ sedata, load, nwdata }) {
   return (
     <PaugListBlock>
-      {data.map((item, index) => {
-        return <PaugItem key={index} text={item.name}></PaugItem>;
-      })}
+      {load ? nwdata.map((item, index) => {
+        return <PaugItem key={index} df={item}></PaugItem>;
+      }) : sedata.map((item, index) => {
+        return <PaugItem key={index} df={item}></PaugItem>;
+      }) }
+      
     </PaugListBlock>
   );
 }

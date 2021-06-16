@@ -7,6 +7,7 @@ const PaugHeadBlock = styled.div`
   padding-right: 32px;
   padding-bottom: 24px;
   border-bottom: 1px solid #e9ecef;
+
   h1 {
     margin: 0;
     font-size: 36px;
@@ -24,20 +25,17 @@ const PaugHeadBlock = styled.div`
     margin-top: 40px;
     font-weight: bold;
   }
-  .tasks-right {
-    color: #20c997;
-    font-size: 18px;
-    margin-top: 40px;
-    font-weight: bold;
-  }
+  
 `;
 
-function PaugHead() {
+function PaugHead({load, onClick}) {
   return (
     <PaugHeadBlock>
       <h1>종량제 판매소</h1>
-      <div className="tasks-left">서북구</div>
-      <div className="tasks-right">동남구</div>
+      <div className="tasks-left">
+        <button onClick={onClick}>{load ? "동남구" : "서북구"}</button>  
+      </div>
+      
     </PaugHeadBlock>
   );
 }
