@@ -24,12 +24,20 @@ const PaugHeadBlock = styled.div`
     margin-top: 40px;
     font-weight: bold;
   }
+  .tasks-right {
+    color: #20c997;
+    font-size: 18px;
+    margin-top: 40px;
+    font-weight: bold;
+  }
 `;
 
 function PaugHead() {
   return (
     <PaugHeadBlock>
       <h1>종량제 판매소</h1>
+      <div className="tasks-left">서북구</div>
+      <div className="tasks-right">동남구</div>
     </PaugHeadBlock>
   );
 }
