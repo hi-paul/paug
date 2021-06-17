@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, createContext } from "react";
 import { createGlobalStyle } from "styled-components";
 import se from "./se.json";
 import nw from "./nw.json";
@@ -11,29 +11,28 @@ const GlobalStyle = createGlobalStyle`
     background:#e9ecef;
   }
 `;
-
+export const PaugContext = createContext();
 function App() {
   const [sedata, setSeData] = useState([]);
   const [nwdata, setNwData] = useState([]);
-  
 
   const [load, setLoad] = useState(false);
-  const onClick = () =>{
-    setLoad(!load);  
-  }
+  const onClick = () => {
+    setLoad(!load);
+  };
   useEffect(() => {
     setSeData(se);
     setNwData(nw);
   }, []);
-  
+
   return (
-    <>
+    <PaugContext.Provider value={{ load, onClick, nwdata, sedata }}>
       <GlobalStyle />
       <PaugTemplate>
-        <PaugHead load={load} onClick={onClick}/>
-        <PaugList load={load} nwdata={nwdata} sedata={sedata}/>
+        <PaugHead />
+        <PaugList />
       </PaugTemplate>
-    </>
+    </PaugContext.Provider>
   );
 }
 

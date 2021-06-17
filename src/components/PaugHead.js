@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useContext } from "react";
 import styled from "styled-components";
+import { PaugContext } from "../App.js";
 
 const PaugHeadBlock = styled.div`
   padding-top: 48px;
@@ -25,17 +26,16 @@ const PaugHeadBlock = styled.div`
     margin-top: 40px;
     font-weight: bold;
   }
-  
 `;
 
-function PaugHead({load, onClick}) {
+function PaugHead() {
+  const { load, onClick } = useContext(PaugContext);
   return (
     <PaugHeadBlock>
       <h1>종량제 판매소</h1>
       <div className="tasks-left">
-        <button onClick={onClick}>{load ? "동남구" : "서북구"}</button>  
+        <button onClick={onClick}>{load ? "동남구" : "서북구"}</button>
       </div>
-      
     </PaugHeadBlock>
   );
 }

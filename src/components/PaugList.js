@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useContext } from "react";
 import styled from "styled-components";
 import PaugItem from "./PaugItem";
+import { PaugContext } from "../App.js";
 
 const PaugListBlock = styled.div`
   flex: 1;
@@ -9,15 +10,17 @@ const PaugListBlock = styled.div`
   overflow-y: auto;
 `;
 
-function PaugList({ sedata, load, nwdata }) {
+function PaugList() {
+  const { sedata, load, nwdata } = useContext(PaugContext);
   return (
     <PaugListBlock>
-      {load ? nwdata.map((item, index) => {
-        return <PaugItem key={index} df={item}></PaugItem>;
-      }) : sedata.map((item, index) => {
-        return <PaugItem key={index} df={item}></PaugItem>;
-      }) }
-      
+      {load
+        ? nwdata.map((item, index) => {
+            return <PaugItem key={index} df={item}></PaugItem>;
+          })
+        : sedata.map((item, index) => {
+            return <PaugItem key={index} df={item}></PaugItem>;
+          })}
     </PaugListBlock>
   );
 }
