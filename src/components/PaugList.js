@@ -11,16 +11,20 @@ const PaugListBlock = styled.div`
 `;
 
 function PaugList() {
-  const { sedata, load, nwdata } = useContext(PaugContext);
+  const { sedata, load, nwdata, currentPosts } = useContext(PaugContext);
+  const res = currentPosts.map((item, index) => {
+    return <PaugItem key={index} df={item} />;
+  });
   return (
     <PaugListBlock>
-      {load
+      {/* {load
         ? nwdata.map((item, index) => {
             return <PaugItem key={index} df={item}></PaugItem>;
           })
         : sedata.map((item, index) => {
             return <PaugItem key={index} df={item}></PaugItem>;
-          })}
+          })} */}
+      {res}
     </PaugListBlock>
   );
 }
